@@ -1,0 +1,6 @@
+metadata.event_type = "PROCESS_LAUNCH"
+(
+  re.regex(target.process.command_line, "IsDebuggerPresent|CheckRemoteDebuggerPresent|NtQueryInformationProcess") nocase
+  or re.regex(target.process.file.full_path, `\.vmp`) nocase
+  or re.regex(target.process.file.pe_file.imphash, `VMProtect`) nocase
+)
